@@ -38,6 +38,6 @@
     "webpack-cli": "4.9.1"
   },
   "dependencies": {
-    "source-replacement": "1.0.1"
+    "source-replacement": "1.0.4"
   }
 }
