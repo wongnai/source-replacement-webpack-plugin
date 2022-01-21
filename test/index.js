@@ -1,1 +1,1 @@
-console.log('Test Script')
+console.log(process.env.TEST)

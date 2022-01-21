@@ -1,34 +1,43 @@
 import Webpack from 'webpack'
-import path from 'path'
+import { ConcatSource } from 'webpack-sources'
 
-const PLUGIN_NAME = 'SourceReplacementPlugin'
+const PLUGIN_NAME = 'DefineAfterBundleWebpackPlugin'
 
-const MODULE_NAME = path.resolve(process.cwd(), 'node_modules', 'source-replacement', 'build', 'index.js') 
+class DefineAfterBundleWebpackPlugin {
+	replaceMapper: Record<string, any>
 
-type Entry = string | string[]
+	constructor(replaceMapper: Record<string, any>) {
+		this.replaceMapper = replaceMapper
+	}
 
-class SourceReplacementPlugin {
-    apply(compiler: Webpack.Compiler) {
-        compiler.hooks.entryOption.tap({ name: PLUGIN_NAME }, this.entryModifierPlugins)
-    }
+	apply(compiler: Webpack.Compiler) {
+		compiler.hooks.compilation.tap(PLUGIN_NAME, compilation => {
+			compilation.hooks.afterOptimizeChunkAssets.tap(PLUGIN_NAME, chunks => {
+				for (const chunk of chunks) {
+					if (!chunk.files) {
+						continue
+					}
 
-    getEntryWithSourceReplacement = (entry: Entry | Record<string, Entry>) => {
-        if (typeof entry === 'string') {
-            return [MODULE_NAME, entry]
-        } else if (Array.isArray(entry)) {
-            entry.unshift(MODULE_NAME)
-        } else if (typeof entry === 'object') {
-            Object.keys(entry).forEach(key => {
-                (entry as any)[key] = this.getEntryWithSourceReplacement(entry[key])
-            })
-        }
+					for (const file of chunk.files) {
+						compilation.updateAsset(file, old => {
+							const source = new ConcatSource(old).source()
 
-        return entry
-    }
-
-    entryModifierPlugins = (_: string, entry: Entry | Record<string, Entry>) => {
-        entry = this.getEntryWithSourceReplacement(entry)
-    }
+							return new ConcatSource(
+								Object.keys(this.replaceMapper).reduce(
+									(updatedSource, toBeReplacedValue) =>
+										updatedSource.replace(
+											new RegExp(toBeReplacedValue, 'g'),
+											this.replaceMapper[toBeReplacedValue],
+										),
+									source,
+								),
+							)
+						})
+					}
+				}
+			})
+		})
+	}
 }
 
-module.exports = SourceReplacementPlugin
+module.exports = DefineAfterBundleWebpackPlugin

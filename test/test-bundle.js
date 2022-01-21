@@ -8,12 +8,8 @@ const outputScriptPath = path.join(testPath, buildScriptPath)
 
 const outputText = fs.readFileSync(outputScriptPath).toString()
 
-if (!outputText.includes('./test/index.js')) {
-    throw new Error('No input source found in build')
-}
-
-if (!outputText.includes('./node_modules/source-replacement/build/index.js')) {
-    throw new Error('No source replacement source found in build')
+if (!outputText.includes('"New Value"')) {
+    throw new Error('No replacement found in build')
 }
 
 console.log('This plugin is fine to be used.')
