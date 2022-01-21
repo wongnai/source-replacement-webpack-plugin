@@ -1,5 +1,5 @@
 const path = require('path')
-const DefineAfterBundleWebpackPlugin = require('../build')
+const SourceReplacementPlugin = require('../build')
 
 module.exports = {
     entry: path.resolve(__dirname, 'index.js'),
@@ -8,9 +8,7 @@ module.exports = {
         path: path.resolve(__dirname, 'build')
     },
     plugins: [
-        new DefineAfterBundleWebpackPlugin({
-            'process.env.TEST': JSON.stringify('New Value'),
-        }),
+        new SourceReplacementPlugin(),
     ],
     target: 'node',
     mode: 'development',

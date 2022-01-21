@@ -1,43 +1,34 @@
 import Webpack from 'webpack'
-import { ConcatSource } from 'webpack-sources'
+import path from 'path'
 
-const PLUGIN_NAME = 'DefineAfterBundleWebpackPlugin'
+const PLUGIN_NAME = 'SourceReplacementPlugin'
 
-class DefineAfterBundleWebpackPlugin {
-	replaceMapper: Record<string, any>
+const MODULE_NAME = path.resolve(process.cwd(), 'node_modules', 'source-replacement', 'build', 'index.js') 
 
-	constructor(replaceMapper: Record<string, any>) {
-		this.replaceMapper = replaceMapper
-	}
+type Entry = string | string[]
 
-	apply(compiler: Webpack.Compiler) {
-		compiler.hooks.compilation.tap(PLUGIN_NAME, compilation => {
-			compilation.hooks.afterOptimizeChunkAssets.tap(PLUGIN_NAME, chunks => {
-				for (const chunk of chunks) {
-					if (!chunk.files) {
-						continue
-					}
+class SourceReplacementPlugin {
+    apply(compiler: Webpack.Compiler) {
+        compiler.hooks.entryOption.tap({ name: PLUGIN_NAME }, this.entryModifierPlugins)
+    }
 
-					for (const file of chunk.files) {
-						compilation.updateAsset(file, old => {
-							const source = new ConcatSource(old).source()
+    getEntryWithSourceReplacement = (entry: Entry | Record<string, Entry>) => {
+        if (typeof entry === 'string') {
+            return [MODULE_NAME, entry]
+        } else if (Array.isArray(entry)) {
+            entry.unshift(MODULE_NAME)
+        } else if (typeof entry === 'object') {
+            Object.keys(entry).forEach(key => {
+                (entry as any)[key] = this.getEntryWithSourceReplacement(entry[key])
+            })
+        }
 
-							return new ConcatSource(
-								Object.keys(this.replaceMapper).reduce(
-									(updatedSource, toBeReplacedValue) =>
-										updatedSource.replace(
-											new RegExp(toBeReplacedValue, 'g'),
-											this.replaceMapper[toBeReplacedValue],
-										),
-									source,
-								),
-							)
-						})
-					}
-				}
-			})
-		})
-	}
+        return entry
+    }
+
+    entryModifierPlugins = (_: string, entry: Entry | Record<string, Entry>) => {
+        entry = this.getEntryWithSourceReplacement(entry)
+    }
 }
 
-module.exports = DefineAfterBundleWebpackPlugin
+module.exports = SourceReplacementPlugin
