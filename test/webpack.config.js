@@ -1,5 +1,5 @@
 const path = require('path')
-const SourceReplacementPlugin = require('../build')
+const { SourceReplacementPlugin } = require('../build')
 
 module.exports = {
     entry: path.resolve(__dirname, 'index.js'),

@@ -12,7 +12,7 @@ if (!outputText.includes('./test/index.js')) {
     throw new Error('No input source found in build')
 }
 
-if (!outputText.includes('./node_modules/source-replacement/build/index.js')) {
+if (!outputText.includes("console.log('Source Replacement is running');")) {
     throw new Error('No source replacement source found in build')
 }
 

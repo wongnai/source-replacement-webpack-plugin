@@ -1247,6 +1247,13 @@ builtins@^1.0.3:
   resolved "https://registry.yarnpkg.com/builtins/-/builtins-1.0.3.tgz#cb94faeb61c8696451db36534e1422f94f0aee88"
   integrity sha1-y5T662HIaWRR2zZTThQi+U8K7og=
 
+bundle-more-webpack-plugin@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/bundle-more-webpack-plugin/-/bundle-more-webpack-plugin-1.0.0.tgz#2cc56b13c443f5fb6c70d8690ad263fb8b26b9b5"
+  integrity sha512-6w/AeJFD0ypkue5Xf7Up3IaPqfOAHPzi78DY6bnv43xx3iPwdCR2MUyFws1IWc7+LXaWt+VfBErSuwYdDVkFVA==
+  dependencies:
+    webpack-inject-plugin "1.5.5"
+
 cacache@^12.0.2:
   version "12.0.4"
   resolved "https://registry.yarnpkg.com/cacache/-/cacache-12.0.4.tgz#668bcbd105aeb5f1d92fe25570ec9525c8faa40c"
@@ -2011,6 +2018,11 @@ emoji-regex@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-8.0.0.tgz#e818fd69ce5ccfcb404594f842963bf53164cc37"
   integrity sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==
+
+emojis-list@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
+  integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
 
 emojis-list@^3.0.0:
   version "3.0.0"
@@ -3598,6 +3610,15 @@ loader-utils@^1.2.3:
   dependencies:
     big.js "^5.2.2"
     emojis-list "^3.0.0"
+    json5 "^1.0.1"
+
+loader-utils@~1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.2.3.tgz#1ff5dc6911c9f0a062531a4c04b609406108c2c7"
+  integrity sha512-fkpz8ejdnEMG3s37wGL07iSBDg99O9D5yflE9RGNH3hRdx9SOwYfnGYdZOUIZitN8E+E2vkq3MUMYMvPYl5ZZA==
+  dependencies:
+    big.js "^5.2.2"
+    emojis-list "^2.0.0"
     json5 "^1.0.1"
 
 locate-path@^2.0.0:
@@ -6290,6 +6311,13 @@ webpack-cli@4.9.1:
     interpret "^2.2.0"
     rechoir "^0.7.0"
     webpack-merge "^5.7.3"
+
+webpack-inject-plugin@1.5.5:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/webpack-inject-plugin/-/webpack-inject-plugin-1.5.5.tgz#fbecdb5cbc48e460aa8bcbdbad409933db9adca9"
+  integrity sha512-cYhj/3X6m19zmIEb/Y09/VjCf9SeL+/7Wv6YrUi/wBGFQPFMINEfzHBJV0qokeqvUwE23h8NzrTIrkHALZ9PaA==
+  dependencies:
+    loader-utils "~1.2.3"
 
 webpack-merge@^5.7.3:
   version "5.8.0"

@@ -20,7 +20,7 @@ yarn add --dev source-replacement-webpack-plugin
 #### In your webpack config
 
 ```js
-const SourceReplacementPlugin = require('source-replacement-webpack-plugin')
+const { SourceReplacementPlugin } = require('source-replacement-webpack-plugin')
 
 module.exports = {
     ...

@@ -15,11 +15,13 @@ export default {
     format: 'cjs',
     sourcemap: true,
   },
+  external: ['bundle-more-webpack-plugin'],
   plugins: [
     resolve(),
     commonjs(),
     typescript({
-      outDir: config.deploy
+      outDir: config.deploy,
+      declaration: true,
     }),
     json(),
     visualizer({
