@@ -39,6 +39,6 @@
   },
   "dependencies": {
     "bundle-more-webpack-plugin": "1.0.0",
-    "source-replacement": "1.0.5"
+    "source-replacement": "1.0.6"
   }
 }
