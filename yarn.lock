@@ -5581,10 +5581,10 @@ source-map@^0.7.3:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
-source-replacement@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/source-replacement/-/source-replacement-1.0.4.tgz#0ef6aa9fd5c15ac10b64a2df29ee449432324232"
-  integrity sha512-/QTmwxiHRMaBp5NPwtnryDVIXKHs+3SaErnaiPPoKyzr4rODKdPrPxG35Y6iaPtvae2Tq+P/nRu5natt2JgdEw==
+source-replacement@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/source-replacement/-/source-replacement-1.0.5.tgz#b048cab9becbdc26ae9757740a2b44bf0fa17377"
+  integrity sha512-f4+iMb2gtuKujYBqlqceKIPdalb+bqVy9D7PvVKCVhamCOf7wLJ7bQo0l/4t8DLuEwnDzRFIt/5mzGVb4eSF8g==
 
 sourcemap-codec@^1.4.4:
   version "1.4.8"
