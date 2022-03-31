@@ -15,7 +15,7 @@ export default {
     format: 'cjs',
     sourcemap: true,
   },
-  external: ['bundle-more-webpack-plugin'],
+  external: Object.keys(config.dependencies),
   plugins: [
     resolve(),
     commonjs(),

@@ -1,13 +1,15 @@
 const path = require('path')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { SourceReplacementPlugin } = require('../build')
 
 module.exports = {
     entry: path.resolve(__dirname, 'index.js'),
     output: {
-        filename: 'index.js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'build')
     },
     plugins: [
+        new HTMLWebpackPlugin(),
         new SourceReplacementPlugin(),
     ],
     target: 'node',
