@@ -12,6 +12,7 @@ const CODE_BLOCKER_SRC = path.resolve(
 )
 
 const DEFAULT_ENTRY_NAME = 'client'
+
 export class SourceReplacementPlugin {
 	private readonly entryName: string
 
