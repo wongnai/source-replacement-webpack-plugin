@@ -31,6 +31,20 @@ module.exports = {
 }
 ```
 
+custom entry name
+
+```js
+const { SourceReplacementPlugin } = require('source-replacement-webpack-plugin')
+
+module.exports = {
+    ...
+    plugins: [
+        ...,
+        new SourceReplacementPlugin('main') // default is 'client'
+    ]
+}
+```
+
 #### On your browser
 
 Enter page with the following example
