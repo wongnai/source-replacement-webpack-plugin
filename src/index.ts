@@ -1,7 +1,6 @@
+import InjectEntryPlugin from 'webpack-inject-entry-plugin'
 import Webpack from 'webpack'
 import AddAssetHtmlWebpackPlugin from 'add-asset-html-webpack-plugin'
-import InjectPlugin, { ENTRY_ORDER } from 'webpack-inject-plugin'
-import fs from 'fs'
 import path from 'path'
 
 const CODE_BLOCKER_SRC = path.resolve(
@@ -13,17 +12,15 @@ const CODE_BLOCKER_SRC = path.resolve(
 )
 
 export class SourceReplacementPlugin {
-	apply(complier: Webpack.Compiler) {
+	apply(compiler: Webpack.Compiler) {
 		new AddAssetHtmlWebpackPlugin({
 			filepath: require.resolve('source-replacement'),
 			attributes: {
 				type: 'module',
 				async: true,
 			},
-		}).apply(complier)
+		}).apply(compiler)
 
-		new InjectPlugin(() => fs.readFileSync(CODE_BLOCKER_SRC, { encoding: 'utf8' }), {
-			entryOrder: ENTRY_ORDER.First,
-		}).apply(complier)
+		new InjectEntryPlugin({ entry: 'main', filepath: CODE_BLOCKER_SRC }).apply(compiler)
 	}
 }
