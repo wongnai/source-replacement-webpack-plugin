@@ -11,11 +11,12 @@ const CODE_BLOCKER_SRC = path.resolve(
 	'code-blocker.js',
 )
 
+const DEFAULT_ENTRY_NAME = 'client'
 export class SourceReplacementPlugin {
 	private readonly entryName: string
 
 	constructor(entryName?: string) {
-		this.entryName = entryName || 'client'
+		this.entryName = entryName || DEFAULT_ENTRY_NAME
 	}
 
 	apply(compiler: Webpack.Compiler) {
