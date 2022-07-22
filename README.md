@@ -7,7 +7,7 @@
 
 Webpack Plugin to bundle [source-replacement](https://github.com/wongnai/source-replacement) script to your app.
 
-*** Beware yourself, don't use this in production build ***
+**_ Beware yourself, don't use this in production build _**
 
 ## Installation
 
@@ -27,6 +27,20 @@ module.exports = {
     plugins: [
         ...,
         new SourceReplacementPlugin()
+    ]
+}
+```
+
+custom entry name
+
+```js
+const { SourceReplacementPlugin } = require('source-replacement-webpack-plugin')
+
+module.exports = {
+    ...
+    plugins: [
+        ...,
+        new SourceReplacementPlugin('main') // default is 'client'
     ]
 }
 ```
