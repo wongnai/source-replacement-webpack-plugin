@@ -7,7 +7,7 @@
 
 Webpack Plugin to bundle [source-replacement](https://github.com/wongnai/source-replacement) script to your app.
 
-**_ Beware yourself, don't use this in production build _**
+*** Beware yourself, don't use this in production build ***
 
 ## Installation
 
