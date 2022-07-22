@@ -11,7 +11,15 @@ const CODE_BLOCKER_SRC = path.resolve(
 	'code-blocker.js',
 )
 
+const DEFAULT_ENTRY_NAME = 'client'
+
 export class SourceReplacementPlugin {
+	private readonly entryName: string
+
+	constructor(entryName = DEFAULT_ENTRY_NAME) {
+		this.entryName = entryName
+	}
+
 	apply(compiler: Webpack.Compiler) {
 		new AddAssetHtmlWebpackPlugin({
 			filepath: require.resolve('source-replacement'),
@@ -21,6 +29,6 @@ export class SourceReplacementPlugin {
 			},
 		}).apply(compiler)
 
-		new InjectEntryPlugin({ entry: 'main', filepath: CODE_BLOCKER_SRC }).apply(compiler)
+		new InjectEntryPlugin({ entry: this.entryName, filepath: CODE_BLOCKER_SRC }).apply(compiler)
 	}
 }
