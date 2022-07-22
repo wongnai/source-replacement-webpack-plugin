@@ -15,8 +15,8 @@ const DEFAULT_ENTRY_NAME = 'client'
 export class SourceReplacementPlugin {
 	private readonly entryName: string
 
-	constructor(entryName?: string) {
-		this.entryName = entryName || DEFAULT_ENTRY_NAME
+	constructor(entryName = DEFAULT_ENTRY_NAME) {
+		this.entryName = entryName
 	}
 
 	apply(compiler: Webpack.Compiler) {
