@@ -23,9 +23,9 @@ function injectEntry(
 
 	options.entry = () =>
 		entry.then((e: any) => {
-			const injectEntry: typeof e[string] = e[entryName] || {}
+			const injectEntry: typeof e[string] | undefined = e[entryName]
 
-			if (!injectEntry.import) {
+			if (!injectEntry?.import) {
 				throw new Error(
 					`Could not find an entry named '${entryName}'. See https://webpack.js.org/concepts/entry-points/ for an overview of webpack entries.`,
 				)
