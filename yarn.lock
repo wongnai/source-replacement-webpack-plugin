@@ -5360,13 +5360,6 @@ webpack-cli@4.9.1:
     rechoir "^0.7.0"
     webpack-merge "^5.7.3"
 
-webpack-inject-entry-plugin@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/webpack-inject-entry-plugin/-/webpack-inject-entry-plugin-0.0.3.tgz#3e8fafa6ce1ef7b7105f0ad9fcc621420d7c9626"
-  integrity sha512-yG/+XUD9r2saj7oLzxFl278rnPhY+IZSZ9Win3KNr9dek2lqpo4HPBrwF3r1tEFX5B2a8I5reNdG1hdI11ekWw==
-  dependencies:
-    schema-utils "^3.0.0"
-
 webpack-merge@^5.7.3:
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-5.8.0.tgz#2b39dbf22af87776ad744c390223731d30a68f61"
