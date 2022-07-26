@@ -1,22 +1,12 @@
 import Webpack from 'webpack'
-import AddAssetHtmlWebpackPlugin from 'add-asset-html-webpack-plugin'
-import path from 'path'
 import { Compiler } from 'webpack'
-
-const CODE_BLOCKER_SRC = path.resolve(
-	process.cwd(),
-	'node_modules',
-	'source-replacement',
-	'build',
-	'code-blocker.js',
-)
 
 const DEFAULT_ENTRY_NAME = 'client'
 
 function injectEntry(
 	options: Compiler['options'],
 	entryName: string,
-	injectFilepath: string,
+	injectFilepath: string[],
 ): void {
 	const entry: any =
 		typeof options.entry === 'function' ? options.entry() : Promise.resolve(options.entry)
@@ -31,9 +21,8 @@ function injectEntry(
 				)
 			}
 
-			if (!injectEntry.import.includes(injectFilepath)) {
-				injectEntry.import.unshift(injectFilepath)
-			}
+			injectEntry.import.unshift(...injectFilepath)
+
 			return e
 		})
 }
@@ -46,14 +35,9 @@ export class SourceReplacementPlugin {
 	}
 
 	apply(compiler: Webpack.Compiler) {
-		new AddAssetHtmlWebpackPlugin({
-			filepath: require.resolve('source-replacement'),
-			attributes: {
-				type: 'module',
-				async: true,
-			},
-		}).apply(compiler)
-
-		injectEntry(compiler.options, this.entryName, CODE_BLOCKER_SRC)
+		injectEntry(compiler.options, this.entryName, [
+			require.resolve('source-replacement'),
+			require.resolve('source-replacement/build/code-blocker.js'),
+		])
 	}
 }
