@@ -1,5 +1,4 @@
 import Webpack from 'webpack'
-import path from 'path'
 import { Compiler } from 'webpack'
 
 const DEFAULT_ENTRY_NAME = 'client'
