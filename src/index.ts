@@ -23,7 +23,6 @@ function injectEntry(
 			}
 
 			injectEntry.import.unshift(...injectFilepath)
-			console.log(injectEntry)
 
 			return e
 		})
