@@ -1097,6 +1097,11 @@ builtins@^1.0.3:
   resolved "https://registry.yarnpkg.com/builtins/-/builtins-1.0.3.tgz#cb94faeb61c8696451db36534e1422f94f0aee88"
   integrity sha1-y5T662HIaWRR2zZTThQi+U8K7og=
 
+bundle-more-webpack-plugin@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/bundle-more-webpack-plugin/-/bundle-more-webpack-plugin-2.0.0.tgz#2694731e9a609e563816419e748070263643e7f4"
+  integrity sha512-LqX0dWN3yxPaGcmX1MKcHUcBmfZ/lS+6m1H/ZkFI9Vj4guVwMOAeyK2UBPdjMv2GfFFDfnC/2NXaHmlZOczWSg==
+
 cacache@^15.0.3, cacache@^15.0.5, cacache@^15.2.0, cacache@^15.3.0:
   version "15.3.0"
   resolved "https://registry.yarnpkg.com/cacache/-/cacache-15.3.0.tgz#dc85380fb2f556fe3dda4c719bfa0ec875a7f1eb"
