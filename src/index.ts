@@ -1,5 +1,4 @@
 import Webpack from 'webpack'
-import { Compiler } from 'webpack'
 import { BundleMoreWebpackPlugin } from 'bundle-more-webpack-plugin'
 
 const DEFAULT_ENTRY_NAME = 'client'
